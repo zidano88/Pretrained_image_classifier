@@ -18,6 +18,7 @@
 ##
 # Imports python modules
 from os import listdir
+import os
 
 # TODO 2: Define get_pet_labels function below please be certain to replace None
 #       in the return statement with results_dic dictionary that you create 
@@ -41,22 +42,34 @@ def get_pet_labels(image_dir):
     results_dic = dict()
     for idx in range(0, len(in_files), 1):
         if in_files[idx][0] != ".":
+            list_word = in_files[idx].split("_")
+            pet_label=""
+            for list_word1 in list_word:
+                if list_word1.isalpha():
+                    pet_label += list_word1.lower() + " "
+            pet_label=pet_label.strip()   
+            if in_files[idx] not in results_dic:
+                results_dic[in_files[idx]] = [pet_label]
+            
+            
+            else:
+                print("** Warning: Duplicate files exist in directory:",in_files[idx])
+            
+            '''
             list_word = in_files[idx].lower()
             list_word2 = list_word.strip() 
-            list_word1 =  list_word2.split("_")
+            list_word1 =  os.path.splitext(list_word2)#split("_")listdir
             #list_word2 = list_word1.strip() 
-            pet_label = ""
+            //pet_label = ""
             for word in list_word1:
                 if word.isalpha():
                     pet_label += word + " "
                     
                     
-        if in_files[idx] not in results_dic:
-              results_dic[in_files[idx]] = [pet_label] # [idx] excluded
-             
-        else:
-            print("** Warning: Duplicate files exist in directory:", 
-                  in_files[idx])
+            if in_files[idx] not in results_dic:
+                results_dic[in_files[idx]] = [pet_label.strip()] # [idx] excluded
+            ''' 
+            
             
     
     """

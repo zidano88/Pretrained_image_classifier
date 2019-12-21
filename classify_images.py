@@ -66,7 +66,7 @@ def classify_images(images_dir, results_dic, model):
             results_dic[key].extend((truth,1))
 #            results_dic[key].append(1)
         else:
-            results_dic[key].extend((truth,1))
+            results_dic[key].extend((model_label2,0))
 #            results_dic[key].append(0)
         #check here
         #if filenames[idx] not in results_dic:

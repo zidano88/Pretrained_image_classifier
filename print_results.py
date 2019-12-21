@@ -77,7 +77,7 @@ def print_results(results_dic, results_stats_dic, model,
     print(" ")
     for key in results_stats_dic:
         if key[0] == 'p':
-            print("{:20}: {:3d}".format(key, results_stats_dic[key])
+            print("{:20}: {:3f}".format(key, results_stats_dic[key]))
                 
     if (print_incorrect_dogs and 
         ( (results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs'])
@@ -86,10 +86,10 @@ def print_results(results_dic, results_stats_dic, model,
         print("\nINCORRECT Dog/NOT Dog Assignments:")
         for key in results_dic:
             if ((results_dic[key][3] == 1 and results_dic[key][4] == 0) or (results_dic[key][3] == 0 and results_dic[key][4] == 1)):
-                print("{:20}: {:3d}".format(results_dic[key][0], results_dic[key][1])              
+                print("{:20}: {:20}".format(results_dic[key][0], results_dic[key][1])  )            
     
-    if (print_incorrect_breed and         (results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_b
-       ):
+    
+    if (print_incorrect_breed and (results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed'])):
         print("\nINCORRECT Dog Breed Assignment:")
         
         for key in results_dic:
